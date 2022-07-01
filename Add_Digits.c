@@ -1,23 +1,20 @@
-#include<stdio.h>
+ #include<stdio.h>
 int main()
 {
-    int n,r,sum=0,x,temp;
+    int n,sum=0;
     scanf("%d",&n);
-    x:temp=n;
-    sum=0;
     while(n)
     {
-        r=n%10;
-        sum+=r;
-        n=n/10;
+        sum=0;
+        while(n)
+        {
+            sum+=n%10;
+            n/=10;
+        }
+        if(sum>9)
+        {
+            n=sum;
+        }
     }
-    if(sum<=9)
-    {
-        printf("%d",sum);
-    }
-    else
-    {
-        n=sum;
-        goto x;
-    }
+    printf("%d",sum);
 }
