@@ -1,37 +1,31 @@
 #include<stdio.h>
 #include<math.h>
-
 int main()
 {
-    int number,sum=0,temp=0;
-    scanf("%d",&number);
-    while(sum!=1 || sum!=7)
-    {
-        while(number)
-        {
-            temp+=pow(number%10,2);
-            number/=10;
-        }
-        if(temp>9)
-        {
-            number=temp;
-            temp=0;
-        }
-        else if(temp==1)
-        {
-            printf("True");
-            break;
-        }
-        else if(temp==7)
-        {
-            printf("True");
-            break;
-        }
-        else if(temp<10)
-        {
-            printf("False");
-            break;
-        }
-    }
-    return 0;
+	int n,r,ans=0;
+	scanf("%d",&n);
+	while(n)
+	{
+		r=n%10;
+		ans+=pow(r,2);
+		n=n/10;
+		if(n==0 && ans<10)
+		{
+			if(ans==1 || ans==7)
+			{
+				printf("True");
+			}
+			else
+			{
+				printf("False");
+			}
+			
+		}
+		else if(n==0 && ans>=10)
+		{
+			n=ans;
+			r=0;
+			ans=0;
+		}
+	}
 }
