@@ -1,54 +1,48 @@
 #include<stdio.h>
-
-int rev(int n)
-{
-    int res=0,r;
-    while(n>0)
-    {
-        r=n%10;
-        res=res*10+r;
-        n=n/10;
-    }
-    return res;
-}
-
 int main()
 {
-    int k,temp,temp1,temp2,d1,d2;
-    scanf("%d",&k);
-    temp=k;
-    while(1)
+    int n,left=0,right=0,temp,rev=0;
+    scanf("%d",&n);
+    for(int i=n+1;right==0;i++)
     {
-        temp++;
-        if(temp==rev(temp))
+        temp=i;
+        rev=0;
+        while(temp)
         {
-            temp1=temp;
-           d1=temp1-k;
-           break;
+            rev=rev*10+temp%10;
+            temp/=10;
         }
-    }
-    temp=k;
-    while(1)
-    {
-        temp--;
-        if(temp==rev(temp))
+        if(rev==i)
         {
-            temp2=temp;
-            d2=k-temp2;
+            right=i;
             break;
         }
     }
-    if(d1==d2)
+    for (int i=n-1;left==0;i--)
     {
-    	printf("%d %d",temp2,temp1);
-	}
-	if(d1>d2)
-	{
-		printf("%d",temp2);
-	}
-	if(d1<d2)
-	{
-		printf("%d",temp1);
-	}
-    return 0;
+        temp=i;
+        rev=0;
+        while (temp)
+        {
+            rev=rev*10+temp%10;
+            temp/=10;
+        }
+        if(rev==i)
+        {
+            left=i;
+            break;
+        }
+    }
+    if(right-n>n-left)
+    {
+        printf("%d",left);
+    }
+    else if(right-n<n-left)
+    {
+        printf("%d",right);
+    }
+    else
+    {
+        printf("%d %d",left,right);
+    }
 }
