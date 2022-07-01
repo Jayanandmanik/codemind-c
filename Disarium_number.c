@@ -1,36 +1,33 @@
 #include<stdio.h>
+#include<math.h>
+void dis(int a)
+{
+   int t,rev=0,sum=0;
+   t=a;
+   while(a)
+   {
+       rev=(rev*10)+a%10;
+       a/=10;
+   }
+   for(int i=1,r;rev;i++)
+   {
+       r=rev%10;
+       sum+=pow(r,i);
+       rev/=10;
+   }
+   if(sum==t)
+   {
+       printf("True");
+   }
+   else
+   {
+       printf("False");
+   }
+    
+}
 int main()
 {
-    int n,r,sum=0,a,c=1,p=1,i;
-    scanf("%d",&n);
-    a=n;
-    while(a!=0)
-    {
-        r=a%10;
-        sum=(sum*10)+r;
-        a=a/10;
-    }
-    a=sum;
-    sum=0;
-    while(a!=0)
-    {
-        r=a%10;
-        for(i=1;i<=c;i++)
-        {
-            p=p*r;
-        }
-        sum=sum+p;
-        a=a/10;
-        c++;
-        p=1;
-    }
-    if(sum==n)
-    {
-        printf("True");
-    }
-    else
-    {
-        printf("False");
-    }
-    
+    int x;
+    scanf("%d",&x);
+    dis(x);
 }
